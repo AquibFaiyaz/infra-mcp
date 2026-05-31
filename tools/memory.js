@@ -1,5 +1,6 @@
 import { exec } from "child_process";
 import { promisify } from "util";
+import { ENV } from "./env.js";
 
 const execAsync = promisify(exec);
 
@@ -9,7 +10,7 @@ export function registerMemoryTool(server) {
     "Get memory usage information",
     {},
     async () => {
-      const { stdout } = await execAsync("vm_stat");
+      const { stdout } = await execAsync(ENV.MEMORY_USAGE_COMMAND);
 
       return {
         content: [

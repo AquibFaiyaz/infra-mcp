@@ -1,5 +1,6 @@
 import { exec } from "child_process";
 import { promisify } from "util";
+import { ENV, buildSshCommand } from "./env.js";
 
 const execAsync = promisify(exec);
 
@@ -9,9 +10,7 @@ export function registerDockerTool(server) {
     "Lists all running Docker containers on the VPS",
     {},
     async () => {
-      const { stdout } = await execAsync(
-        "ssh root@84.247.133.122 'docker ps'"
-      );
+      const { stdout } = await execAsync(buildSshCommand(ENV.VPS_DOCKER_COMMAND));
 
       return {
         content: [

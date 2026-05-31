@@ -1,5 +1,6 @@
 import { exec } from "child_process";
 import { promisify } from "util";
+import { ENV, buildSshCommand } from "./env.js";
 
 const execAsync = promisify(exec);
 
@@ -10,7 +11,7 @@ export function registerVpsDiskTool(server) {
     {},
     async () => {
       const { stdout } = await execAsync(
-        "ssh root@84.247.133.122 'df -h'"
+        buildSshCommand(ENV.VPS_DISK_USAGE_COMMAND)
       );
 
       return {

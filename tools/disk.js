@@ -1,5 +1,6 @@
 import { exec } from "child_process";
 import { promisify } from "util";
+import { ENV } from "./env.js";
 
 const execAsync = promisify(exec);
 
@@ -9,7 +10,7 @@ export function registerDiskTool(server) {
     "Get disk usage information",
     {},
     async () => {
-      const { stdout } = await execAsync("df -h");
+      const { stdout } = await execAsync(ENV.DISK_USAGE_COMMAND);
 
       return {
         content: [
