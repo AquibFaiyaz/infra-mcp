@@ -21,8 +21,8 @@ export const ENV = {
   VPS_USER: process.env.VPS_USER || "root",
   VPS_SSH_OPTIONS: process.env.VPS_SSH_OPTIONS || "",
   POSTGRES_CONTAINER: process.env.POSTGRES_CONTAINER || "postgres-db",
-  POSTGRES_USER: process.env.POSTGRES_USER || "aquib",
-  POSTGRES_DB: process.env.POSTGRES_DB || "javajdbc",
+  POSTGRES_USER: process.env.POSTGRES_USER ,
+  POSTGRES_DB: process.env.POSTGRES_DB ,
   POSTGRES_SCHEMA: process.env.POSTGRES_SCHEMA || "public",
   DISK_USAGE_COMMAND: process.env.DISK_USAGE_COMMAND || "df -h",
   MEMORY_USAGE_COMMAND:
